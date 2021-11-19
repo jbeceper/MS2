@@ -42,7 +42,7 @@ public class TransactionController {
         }
 
         accountOrigin.setBalance(accountOrigin.getBalance() - transaction.getValue());
-        accountOrigin.setBalance(accountDestiny.getBalance() + transaction.getValue());
+        accountDestiny.setBalance(accountDestiny.getBalance() + transaction.getValue());
 
         accountRepository.save(accountDestiny);
         accountRepository.save(accountOrigin);
