@@ -31,4 +31,13 @@ public class AccountController {
         accountRepository.deleteById(username);
     }
 
+    @PutMapping("/account/{username}")
+    Account updateAccount(@PathVariable String username, @RequestBody Account new_account){
+        Account old_account = accountRepository.findById((username)).orElse(null);
+        old_account.setLastChange(new_account.getLastChange());
+        old_account.setBalance((new_account.getBalance()));
+        old_account.setUsername(new_account.getUsername());
+        return accountRepository.save(old_account);
+    }
+
 }
